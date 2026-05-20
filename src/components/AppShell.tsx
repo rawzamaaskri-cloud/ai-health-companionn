@@ -181,12 +181,12 @@ export function AppShell() {
               <span className="ml-auto rounded-full bg-destructive/10 px-2 py-0.5 text-[10px] font-bold text-destructive">3</span>
             </button>
 
-            {/* User card */}
+            {/* User card with inline logout */}
             <div className={cn(
-              "flex items-center gap-3 rounded-xl bg-muted/50 px-3 py-2.5",
+              "flex items-center gap-3 rounded-xl bg-muted/50 p-2",
               locale === "ar" && "flex-row-reverse"
             )}>
-              <div className="avatar-ring">
+              <div className="avatar-ring shrink-0">
                 <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-brand text-xs font-bold text-white">
                   {initials}
                 </div>
@@ -195,17 +195,14 @@ export function AppShell() {
                 <p className="truncate text-sm font-semibold text-foreground">{user?.email?.split("@")[0] || "Utilisateur"}</p>
                 <p className="truncate text-[11px] text-muted-foreground">{user?.email || ""}</p>
               </div>
+              <button
+                onClick={signOut}
+                title={t("logout")}
+                className="flex shrink-0 items-center justify-center rounded-lg p-2 text-muted-foreground hover:bg-destructive/10 hover:text-destructive transition-colors"
+              >
+                <LogOut className="h-4 w-4" />
+              </button>
             </div>
-
-            <button
-              onClick={signOut}
-              className={cn(
-                "flex w-full items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-destructive/10 hover:text-destructive transition-all duration-200",
-                locale === "ar" && "flex-row-reverse"
-              )}
-            >
-              <LogOut className="h-4 w-4" /> {t("logout")}
-            </button>
           </div>
         </aside>
 

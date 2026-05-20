@@ -104,11 +104,20 @@ function AdminLayout() {
               </Link>
             ))}
           </nav>
-          <div className="border-t border-sidebar-border pt-3">
-            <p className="truncate px-3 pb-2 text-xs text-muted-foreground">{user.email}</p>
-            <button onClick={signOut} className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-muted">
-              <LogOut className="h-4 w-4" /> Déconnexion
-            </button>
+          <div className="border-t border-sidebar-border p-3">
+            <div className="flex items-center justify-between rounded-xl bg-muted/50 p-2">
+              <div className="flex flex-col min-w-0 pr-2">
+                <span className="truncate text-xs font-semibold text-foreground">Utilisateur</span>
+                <span className="truncate text-[10px] text-muted-foreground">{user.email}</span>
+              </div>
+              <button 
+                onClick={signOut} 
+                title="Déconnexion"
+                className="flex shrink-0 items-center justify-center rounded-lg p-2 text-muted-foreground hover:bg-destructive/10 hover:text-destructive transition-colors"
+              >
+                <LogOut className="h-4 w-4" />
+              </button>
+            </div>
           </div>
         </aside>
 
