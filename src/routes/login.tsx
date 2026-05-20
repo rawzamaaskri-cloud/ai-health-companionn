@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { Heart, ShieldCheck, Stethoscope, Building2, Zap } from "lucide-react";
+import { Heart, ShieldCheck, Stethoscope, Building2, Zap, ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { DEMO_ACCOUNTS, demoLogin, isDemoMode, getDemoUser, type DemoRole } from "@/lib/demo-auth";
 import { useTranslation } from "@/lib/i18n";
@@ -174,6 +174,18 @@ function Login() {
       <div className={cn("absolute top-4", locale === "ar" ? "left-4" : "right-4")}>
         <LanguageSelector />
       </div>
+
+      {/* Back to Home Link */}
+      <Link 
+        to="/" 
+        className={cn(
+          "absolute top-5 flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors",
+          locale === "ar" ? "right-4 flex-row-reverse" : "left-4"
+        )}
+      >
+        <ArrowLeft className={cn("h-4 w-4", locale === "ar" && "rotate-180")} />
+        {locale === "ar" ? "العودة للرئيسية" : locale === "en" ? "Back to Home" : "Retour à l'accueil"}
+      </Link>
 
       <div className="w-full max-w-md">
         <div className="mb-6 flex justify-center"><Logo withText size={48} /></div>
