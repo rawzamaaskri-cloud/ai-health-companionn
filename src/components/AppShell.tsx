@@ -9,6 +9,7 @@ import { demoLogout } from "@/lib/demo-auth";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "@/lib/i18n";
 import { LanguageSelector } from "@/components/LanguageSelector";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 type NavItem = { to: string; labelKey: "features" | "spaces" | "logout" | string; labelDefault: string; icon: typeof LayoutDashboard; exact?: boolean; badge?: number };
 
@@ -50,6 +51,7 @@ export function AppShell() {
           <Logo withText />
           <div className="flex items-center gap-1">
             <LanguageSelector />
+            <ThemeToggle />
             <Button variant="ghost" size="icon" className="relative" aria-label="Notifications">
               <Bell className="h-5 w-5 text-muted-foreground" />
               <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-destructive animate-pulse-dot" />
@@ -104,7 +106,10 @@ export function AppShell() {
           {/* Logo + Language Selector */}
           <div className="flex items-center justify-between gap-3">
             <Logo withText size={36} />
-            <LanguageSelector />
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <LanguageSelector />
+            </div>
           </div>
           
           <div className="mt-3 flex items-center gap-1.5 rounded-lg bg-primary/5 px-2.5 py-1.5">

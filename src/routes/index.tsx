@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { useState, useEffect, useRef } from "react";
 import { useTranslation } from "@/lib/i18n";
 import { LanguageSelector } from "@/components/LanguageSelector";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { Hero3DScene } from "@/components/Hero3DScene";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/")({
@@ -203,6 +205,7 @@ function Landing() {
             <a href="#ai" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">{t("ai")}</a>
           </nav>
           <div className={cn("flex items-center gap-3", locale === "ar" && "flex-row-reverse")}>
+            <ThemeToggle />
             <LanguageSelector />
             <Link to="/login"><Button variant="ghost" size="sm">{t("login")}</Button></Link>
             <Link to="/signup"><Button size="sm" className="bg-gradient-brand text-primary-foreground shadow-elegant hover:opacity-90">{t("start")}</Button></Link>
@@ -211,13 +214,11 @@ function Landing() {
       </header>
 
       {/* ─── Hero ─── */}
-      <section className="relative bg-gradient-hero overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-primary/5 animate-float" />
-          <div className="absolute top-1/2 -left-20 h-60 w-60 rounded-full bg-accent/5 animate-float" style={{ animationDelay: "2s" }} />
-          <div className="absolute bottom-20 right-1/4 h-40 w-40 rounded-full bg-success/5 animate-float" style={{ animationDelay: "4s" }} />
+      <section className="relative bg-gradient-hero overflow-hidden min-h-[80vh] flex items-center">
+        <div className="absolute inset-0 z-0">
+          <Hero3DScene />
         </div>
-        <div className="relative mx-auto max-w-7xl px-4 py-20 md:py-32 md:px-8">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 py-20 md:py-32 md:px-8">
           <div className="mx-auto max-w-4xl text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold text-primary animate-fade-in">
               <ShieldCheck className="h-3.5 w-3.5" /> {t("hero_tag")}
